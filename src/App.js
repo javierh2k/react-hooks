@@ -10,6 +10,7 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import GlobalStyle from './GlobalStyle';
 import { Layout } from './components/layout';
 import theme from './theme';
+import { StoreProvider } from './store/useStore';
 import { RenderNotFound } from './components/errors/404';
 // import useCombinedReducers from 'use-combined-reducers';
 //
@@ -29,18 +30,20 @@ function App() {
   // });
 
   return (
-    <ThemeProvider theme={theme}>
-      <BootstrapProvider theme={{ '$brand-danger': 'green' }}>
-        <GlobalStyle />
-        <Layout isLoading={loadingRoute}>
-          <NotFoundBoundary render={RenderNotFound}>
-            <ApolloHooksProvider client={client}>
-              <View />
-            </ApolloHooksProvider>
-          </NotFoundBoundary>
-        </Layout>
-      </BootstrapProvider>
-    </ThemeProvider>
+    <StoreProvider>
+      <ThemeProvider theme={theme}>
+        <BootstrapProvider theme={{ '$brand-danger': 'green' }}>
+          <GlobalStyle />
+          <Layout isLoading={loadingRoute}>
+            <NotFoundBoundary render={RenderNotFound}>
+              <ApolloHooksProvider client={client}>
+                <View />
+              </ApolloHooksProvider>
+            </NotFoundBoundary>
+          </Layout>
+        </BootstrapProvider>
+      </ThemeProvider>
+    </StoreProvider>
   );
 }
 

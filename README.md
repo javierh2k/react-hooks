@@ -37,4 +37,3 @@ yarn serve
 npm install -g prettier
 npm install -g eslint
 npm install -g react-proptypes-generate
-npm install -g json-graphql-server
