@@ -1,7 +1,7 @@
 import { useQuery } from 'react-apollo-hooks';
 import gql from 'graphql-tag';
 import { CREATE_USER } from '../../services/user/mutations';
-import { fetch } from '../../hooks/user';
+import { httpl } from '../../hooks/user';
 
 export const userInitialState = {
   user: {
@@ -15,9 +15,10 @@ export const userActions = {
   login: state => ({ user: { loggedIn: true } }),
   logout: state => ({ user: { loggedIn: false } }),
   save: async (state, action) => {
-    const resp = await fetch({
-      mutation: CREATE_USER,
-      variables: action,
+    console.warn(action, 'action');
+    const resp = await httpl({
+      mutation: gql(CREATE_USER),
+      variables: { user: action },
     });
     console.log(resp, 'resppppp');
 

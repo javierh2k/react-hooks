@@ -6,9 +6,9 @@ import { NavLink } from 'react-navi';
 import { TrMessage } from '../components/shared/tables';
 import { useAllUsers } from '../hooks/user';
 
-const UserRow = ({ reqdata, id }) => {
+const UserRow = ({ reqdata }) => {
   const { data, error, loading } = reqdata || useAllUsers();
-  console.log(data);
+  console.log('+++++', error);
   const allUsers = data.allUsers || [];
   if (loading) return <TrMessage data={allUsers}> loading... </TrMessage>;
   if (error)

@@ -2,7 +2,7 @@ import React from 'react';
 import { mount, route } from 'navi';
 import { UserForm } from '../components/user/Form';
 import User from '../containers/users';
-import { useAllUsers } from '../hooks/user';
+import { useAllUsers, useUser } from '../hooks/user';
 
 export default mount({
   '/': route({
@@ -28,6 +28,7 @@ export default mount({
   '/users': route(async req => {
     console.warn(req);
     const result = await useAllUsers(true);
+    console.log(result, 'result');
     return {
       view: <User reqdata={result} />,
     };
@@ -35,14 +36,16 @@ export default mount({
 
   '/user/:id': route(async req => {
     const { id } = req.params;
+    const result = await useUser(id, true);
+
     // const reqdata = await fetch({
     //   query: `query ${GET_USER}`,
     //   variables: { id },
     // });
-    // console.log(reqdata);
+    console.log(result, '++++');
     // reqdata.data.User
     return {
-      view: <UserForm id={id} reqdata={{}} />,
+      view: <UserForm id={id} reqdata={result} />,
     };
   }),
 });
