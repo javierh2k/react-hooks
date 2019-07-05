@@ -20,6 +20,8 @@ const reducer = (state, action) => {
   const updateStateFunc = Actions[action.type];
   delete action.type;
   const update = updateStateFunc(state, action);
+  console.log('update:', update);
+  console.log('action:', action);
   return { ...state, ...update };
 };
 

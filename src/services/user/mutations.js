@@ -1,21 +1,29 @@
 export const CREATE_USER = `
-mutation createUser($user: User){
-    createUser(user:$user){
-        id
-        firstName
-        lastName
-        email
-    }    
+mutation createEmployees($input: EmployeesInput!){
+  createEmployees(input: { data :$input }
+  ) {
+    employee {
+      name
+      lastname
+      email
+    }
+  }
 }
 `;
 
-/** 
- * 
-  mutation SubmitRepo ($repoFullName: String!) {
-    submitRepository (repoFullName: $repoFullName) {
-      id,
-      score,
+export const UPDATE_USER = `
+mutation updateEmployees($id: ID!, $input: editEmployeesInput! ) {
+  updateEmployees(input: {
+      where: {
+          id: $id
+      },
+      data:$input
+  }) {
+    employee {
+      name
+      lastname
+      email
     }
   }
-
- */
+}
+`;

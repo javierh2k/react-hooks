@@ -28,7 +28,7 @@ export default mount({
   '/users': route(async req => {
     console.warn(req);
     const result = await useAllUsers(true);
-    console.log(result, 'result');
+    console.log(result, '______');
     return {
       view: <User reqdata={result} />,
     };

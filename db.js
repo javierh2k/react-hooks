@@ -4,8 +4,8 @@ module.exports = {
         { id: 2, title: "Sic Dolor amet", views: 65, user_id: 456 },
     ],
     users: [
-        { id: 123, firstName: "John", lastName: "Doe", email: "john@doe.com" },
-        { id: 456, firstName: "Max", lastName: "Nil", email: "max@nil.com" }
+        { id: 123, name: "John", lastname: "Doe", email: "john@doe.com" },
+        { id: 456, name: "Max", lastname: "Nil", email: "max@nil.com" }
     ],
     comments: [
         { id: 987, post_id: 1, body: "Consectetur adipiscing elit", date: new Date('2017-07-03') },

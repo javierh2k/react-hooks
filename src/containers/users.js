@@ -8,8 +8,8 @@ import { useAllUsers } from '../hooks/user';
 
 const UserRow = ({ reqdata }) => {
   const { data, error, loading } = reqdata || useAllUsers();
-  console.log('+++++', error);
-  const allUsers = data.allUsers || [];
+
+  const allUsers = data.employees || [];
   if (loading) return <TrMessage data={allUsers}> loading... </TrMessage>;
   if (error)
     return <TrMessage data={allUsers}> Error! {error.message} </TrMessage>;
@@ -17,8 +17,8 @@ const UserRow = ({ reqdata }) => {
   return allUsers.map((user, key) => (
     <Tr key={`user-row-${user.id}`}>
       <Td scope="row"> {key + 1}</Td>
-      <Td>{user.firstName}</Td>
-      <Td>{user.lastName}</Td>
+      <Td>{user.name}</Td>
+      <Td>{user.lastname}</Td>
       <Td>
         <NavLink href={`/user/${user.id}`}>{user.email}</NavLink>
       </Td>

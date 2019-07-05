@@ -8,8 +8,8 @@ import { useStore } from '../../store/useStore';
 import { useUser } from '../../hooks/user';
 
 const createUserSchema = yup.object().shape({
-  firstName: yup.string().required(),
-  lastName: yup.string().required(),
+  name: yup.string().required(),
+  lastname: yup.string().required(),
   email: yup
     .string()
     .email()
@@ -17,56 +17,23 @@ const createUserSchema = yup.object().shape({
 });
 
 export const UserForm = ({ reqdata, id }) => {
-  const {
-    state: { user },
-    dispatch,
-  } = useStore();
+  const { state, dispatch } = useStore();
 
   const { data, error, loading } = reqdata || useUser(id);
-  console.log(data, '______', user);
-  // const allUsers = data.allUsers || [];
-  // if (loading) return <TrMessage> loading... </TrMessage>;
-  // if (error)
-  //   return <TrMessage data={allUsers}> Error! {error.message} </TrMessage>;
+  // console.log(data, '______', user);
 
-  // console.log('xxxxx', user);
-  // dispatch({ type: 'logout' })
-  /**
- 
-
-mutation createUser($user: User) {
-  createUser(input: $user) {
-    id
-    firstName
-    lastName
-    email
-  }
-}
-
-
-
- 
-{
-  "user": {
-     "id" : "4571",
-    "firstName": "Max",
-    "lastName": "aaa",
-    "email": "max@nil.com"
-  } 
-}
-
-* 
- * @param {
- } user 
- * @param {*} d 
- */
   const onSubmit = (user, d) => {
     // console.log(user, d, '+++++++');
     // { values, actions }
     // console.log(actions);
     // actions.setSubmitting(false);
-    user.id = +user.id + 1;
-    dispatch({ type: 'save', ...user });
+    // user.id = +user.id + 1;
+    const userModel = {
+      ...user,
+      id,
+    };
+
+    dispatch({ type: 'save', userModel });
     alert(JSON.stringify(data, null, 2));
   };
 
@@ -75,16 +42,16 @@ mutation createUser($user: User) {
       <h1>Datos de usuario</h1>
       <Formik
         validationSchema={createUserSchema}
-        initialValues={data.User}
+        initialValues={data.employee}
         onSubmit={onSubmit}
         render={({ handleSubmit }) => (
           <Form onSubmit={handleSubmit}>
             <Field
-              name="firstName"
+              name="name"
               label="Nombre"
               component={CustomInputComponent}
             />
-            <Field name="lastName" component={CustomInputComponent} />
+            <Field name="lastname" component={CustomInputComponent} />
             <Field
               name="email"
               component={CustomInputComponent}
@@ -96,6 +63,7 @@ mutation createUser($user: User) {
           </Form>
         )}
       />
+      {JSON.stringify(state)}
     </div>
   );
 };
