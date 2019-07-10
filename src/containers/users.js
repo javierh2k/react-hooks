@@ -1,27 +1,45 @@
 import React from 'react';
-import { Table, Thead, Tr, Th, Tbody, Button } from '@bootstrap-styled/v4';
+
+import { Table, Thead, Tr, Th, Tbody, Td } from '@bootstrap-styled/v4';
+
 import { NavLink } from 'react-navi';
-import { UserRow } from '../components/user/UserRow';
+import { TrMessage } from '../components/shared/tables';
+import { useAllUsers } from '../hooks/user';
+
+const UserRow = ({ reqdata }) => {
+  const { data, error, loading } = reqdata || useAllUsers();
+
+  const allUsers = data.employees || [];
+  if (loading) return <TrMessage data={allUsers}> loading... </TrMessage>;
+  if (error)
+    return <TrMessage data={allUsers}> Error! {error.message} </TrMessage>;
+
+  return allUsers.map((user, key) => (
+    <Tr key={`user-row-${user.id}`}>
+      <Td scope="row"> {key + 1}</Td>
+      <Td>{user.name}</Td>
+      <Td>{user.lastname}</Td>
+      <Td>
+        <NavLink href={`/user/${user.id}`}>{user.email}</NavLink>
+      </Td>
+    </Tr>
+  ));
+};
 
 const UserTable = ({ reqdata }) => (
-  <React.Fragment>
-    <NavLink className="button" href="/user/0">
-      Nuevo
-    </NavLink>{' '}
-    <Table hover>
-      <Thead>
-        <Tr color="active">
-          <Th>#</Th>
-          <Th>Usuario</Th>
-          <Th>Bloqueado</Th>
-          <Th>EMail</Th>
-        </Tr>
-      </Thead>
-      <Tbody>
-        <UserRow reqdata={reqdata} />
-      </Tbody>
-    </Table>
-  </React.Fragment>
+  <Table hover>
+    <Thead>
+      <Tr color="active">
+        <Th>#</Th>
+        <Th>First Name</Th>
+        <Th>Last Name</Th>
+        <Th>EMail</Th>
+      </Tr>
+    </Thead>
+    <Tbody>
+      <UserRow reqdata={reqdata} />
+    </Tbody>
+  </Table>
 );
 
 // UserTable.propTypes = {

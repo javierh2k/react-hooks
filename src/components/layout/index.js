@@ -18,7 +18,7 @@ export const Layout = ({ children, isLoading }) => (
     <App>
       <Header>
         <MenuIcon></MenuIcon>
-        <Title>Administrador</Title>
+        <Title>Administrador Zero</Title>
       </Header>
       <Sidebar>
         <ul className="nav">
@@ -42,14 +42,20 @@ export const Layout = ({ children, isLoading }) => (
           </li>
 
           <li className="nav-item">
+            <NavLink href="/counter" exact className="nav-link">
+              <AboutIcon /> Counter
+            </NavLink>
+          </li>
+
+          <li className="nav-item">
             <NavLink href="/users" exact className="nav-link">
               <AboutIcon /> User
             </NavLink>
           </li>
 
           <li className="nav-item">
-            <NavLink href="/employees" exact className="nav-link">
-              <AboutIcon /> Empleados
+            <NavLink href="/404" exact className="nav-link">
+              404
             </NavLink>
           </li>
         </ul>
@@ -58,3 +64,5 @@ export const Layout = ({ children, isLoading }) => (
     </App>
   </>
 );
+
+// export default Layout;

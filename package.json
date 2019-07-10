@@ -5,11 +5,16 @@
   "dependencies": {
     "@bootstrap-styled/provider": "^1.4.2",
     "@bootstrap-styled/v4": "^3.0.15",
+    "apollo-boost": "^0.4.3",
+    "apollo-cache-inmemory": "^1.6.2",
+    "apollo-client": "^2.6.2",
+    "apollo-link-http": "^1.5.14",
     "classnames": "^2.2.6",
     "date-fns": "^1.30.1",
-    "easy-peasy": "^2.6.5",
     "formik": "^1.5.7",
+    "graphql": "^14.3.1",
     "graphql-request": "^1.8.2",
+    "graphql-tag": "^2.10.1",
     "isomorphic-fetch": "^2.2.1",
     "lodash": "^4.17.11",
     "navi": "^0.12.8",
@@ -17,6 +22,8 @@
     "prettier": "^1.18.2",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
+    "react-apollo": "^2.5.6",
+    "react-apollo-hooks": "^0.4.5",
     "react-dom": "^16.8.6",
     "react-modal": "^3.8.1",
     "react-navi": "^0.12.8",
@@ -24,6 +31,7 @@
     "react-scripts-mdx": "2.1.2",
     "styled-components": "^4.1.3",
     "styled-icons": "^8.1.0",
+    "use-combined-reducers": "^1.0.4",
     "yup": "^0.27.0"
   },
   "scripts": {
@@ -35,8 +43,7 @@
     "serve": "navi-scripts serve",
     "lint": "eslint .",
     "lint:fix": "eslint --fix",
-    "start:json": "json-graphql-server db.js --p 1337",
-    "start:server": "cd server-strapi-docker && docker-compose up"
+    "start:server": "json-graphql-server db.js --p 1337"
   },
   "eslintConfig": {
     "extends": "react-app"

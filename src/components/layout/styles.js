@@ -42,8 +42,6 @@ transition: color 150ms ease-out;
   font-weight: bold;
   border-right: 3px solid red;
   /* ${({ theme }) => theme.primaryColor}; */
-  /* background: ${({ type }) =>
-    type === 'user' ? 'var(--primary-color)' : 'var(--secondary-color)'}; */
 }
 `;
 

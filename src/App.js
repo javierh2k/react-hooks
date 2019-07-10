@@ -3,14 +3,32 @@ import { View, NotFoundBoundary, useLoadingRoute } from 'react-navi';
 
 import { ThemeProvider } from 'styled-components/macro';
 import BootstrapProvider from '@bootstrap-styled/provider';
+import { ApolloProvider as ApolloHooksProvider } from 'react-apollo-hooks';
+import { ApolloClient } from 'apollo-client';
+import { HttpLink } from 'apollo-link-http';
+import { InMemoryCache } from 'apollo-cache-inmemory';
 import GlobalStyle from './GlobalStyle';
 import { Layout } from './components/layout';
 import theme from './theme';
-import StoreProvider from './store';
+import { StoreProvider } from './store/useStore';
 import { RenderNotFound } from './components/errors/404';
+// import useCombinedReducers from 'use-combined-reducers';
+//
+import { URL } from './config';
+
+const client = new ApolloClient({
+  link: new HttpLink({ uri: URL }),
+  cache: new InMemoryCache(),
+});
 
 function App() {
   const loadingRoute = useLoadingRoute();
+
+  // const [state, dispatch] = useCombinedReducers({
+  //   filter: useReducer(filterReducer, 'ALL'),
+  //   todos: useReducer(todoReducer, initialTodos),
+  // });
+
   return (
     <StoreProvider>
       <ThemeProvider theme={theme}>
@@ -18,7 +36,9 @@ function App() {
           <GlobalStyle />
           <Layout isLoading={loadingRoute}>
             <NotFoundBoundary render={RenderNotFound}>
-              <View />
+              <ApolloHooksProvider client={client}>
+                <View />
+              </ApolloHooksProvider>
             </NotFoundBoundary>
           </Layout>
         </BootstrapProvider>

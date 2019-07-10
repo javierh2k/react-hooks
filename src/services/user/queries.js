@@ -1,20 +1,20 @@
 export const GET_USERS = `
 {
-  users{
+  employees{
     id
-    username
+    name
+    lastname
     email
-    blocked
   }
 }
 `;
 
 export const GET_USER = `
-query user($id: ID!) {
-  user(id: $id) {
-    username
+query employee($id: ID!) {
+  employee(id: $id) {
+    name
+    lastname
     email
-    blocked
   }
 }
 `;

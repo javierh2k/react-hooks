@@ -1,28 +1,28 @@
 export const CREATE_USER = `
-mutation createUser($input: UserInput!){
-  createUser(input: { data :$input }
+mutation createEmployees($input: EmployeesInput!){
+  createEmployees(input: { data :$input }
   ) {
     employee {
-      username
+      name
+      lastname
       email
-      blocked
     }
   }
 }
 `;
 
 export const UPDATE_USER = `
-mutation updateUser($id: ID!, $input: editUserInput! ) {
-  updateUser(input: {
+mutation updateEmployees($id: ID!, $input: editEmployeesInput! ) {
+  updateEmployees(input: {
       where: {
           id: $id
       },
       data:$input
   }) {
     employee {
-      username
+      name
+      lastname
       email
-      blocked
     }
   }
 }
