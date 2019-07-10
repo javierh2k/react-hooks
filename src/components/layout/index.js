@@ -1,5 +1,5 @@
 import React from 'react';
-import LoadingIndicator from '../LoadingIndicator';
+import LoadingIndicator from '../shared/LoadingIndicator';
 import {
   App,
   MenuIcon,
@@ -18,7 +18,7 @@ export const Layout = ({ children, isLoading }) => (
     <App>
       <Header>
         <MenuIcon></MenuIcon>
-        <Title>Administrador Zero</Title>
+        <Title>Administrador</Title>
       </Header>
       <Sidebar>
         <ul className="nav">
@@ -42,20 +42,14 @@ export const Layout = ({ children, isLoading }) => (
           </li>
 
           <li className="nav-item">
-            <NavLink href="/counter" exact className="nav-link">
-              <AboutIcon /> Counter
-            </NavLink>
-          </li>
-
-          <li className="nav-item">
             <NavLink href="/users" exact className="nav-link">
               <AboutIcon /> User
             </NavLink>
           </li>
 
           <li className="nav-item">
-            <NavLink href="/404" exact className="nav-link">
-              404
+            <NavLink href="/employees" exact className="nav-link">
+              <AboutIcon /> Empleados
             </NavLink>
           </li>
         </ul>
@@ -64,5 +58,3 @@ export const Layout = ({ children, isLoading }) => (
     </App>
   </>
 );
-
-// export default Layout;

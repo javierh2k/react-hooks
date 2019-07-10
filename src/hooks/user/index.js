@@ -1,17 +1,5 @@
-import { useQuery } from 'react-apollo-hooks';
-import gql from 'graphql-tag';
-
-import fetch from 'isomorphic-fetch';
-import { GraphQLClient } from 'graphql-request';
 import { GET_USERS, GET_USER } from '../../services/user/queries';
-import { URL } from '../../config';
-// import 'isomorphic-fetch'
-
-export const client = new GraphQLClient(URL, {
-  // headers: {
-  //   Authorization: 'Bearer my-jwt-token',
-  // },
-});
+import { client } from '../index';
 
 async function getUser(id) {
   let result = [];
@@ -50,9 +38,9 @@ export function useAllUsers(serverData) {
     return getAlllUsers();
   }
 
-  console.log('from apollo');
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  return useQuery(gql(GET_USERS));
+  // console.log('from apollo');
+  // // eslint-disable-next-line react-hooks/rules-of-hooks
+  // return useQuery(gql(GET_USERS));
 }
 
 export function useUser(id, serverData) {
@@ -61,7 +49,7 @@ export function useUser(id, serverData) {
     return getUser(id);
   }
 
-  console.log('from apollo');
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  return useQuery(gql(GET_USER));
+  // console.log('from apollo');
+  // // eslint-disable-next-line react-hooks/rules-of-hooks
+  // return useQuery(gql(GET_USER));
 }

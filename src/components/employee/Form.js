@@ -4,12 +4,10 @@ import { Form, Button } from '@bootstrap-styled/v4';
 import { Field, Formik } from 'formik';
 import * as yup from 'yup';
 import { useNavigation } from 'react-navi';
-
 import { useStoreState, useStoreActions } from 'easy-peasy';
 import { CustomInputComponent } from '../shared/form';
-import { useUser } from '../../hooks/user';
 
-const createUserSchema = yup.object().shape({
+const createEmployeeSchema = yup.object().shape({
   name: yup.string().required(),
   lastname: yup.string().required(),
   email: yup
@@ -18,28 +16,28 @@ const createUserSchema = yup.object().shape({
     .required(),
 });
 
-export const UserForm = ({ reqdata, id }) => {
-  const save = useStoreActions(actions => actions.user.save);
+export const EmployeeForm = ({ reqdata, id }) => {
+  const save = useStoreActions(actions => actions.employee.save);
   const state = useStoreState(state => state);
   const navigation = useNavigation();
   console.log(state);
   const { data, error, loading } = reqdata;
 
-  const onSubmit = async user => {
-    const userModel = {
-      ...user,
+  const onSubmit = async (employee, d) => {
+    const employeeModel = {
+      ...employee,
       id,
     };
 
-    await save(userModel);
-    await navigation.navigate('/users');
+    await save(employeeModel);
+    await navigation.navigate('/employees');
   };
 
   return (
     <div>
       <h1>Datos de usuario</h1>
       <Formik
-        validationSchema={createUserSchema}
+        validationSchema={createEmployeeSchema}
         initialValues={data.employee}
         onSubmit={onSubmit}
         render={({ handleSubmit }) => (
