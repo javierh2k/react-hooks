@@ -3,8 +3,10 @@ import { Form, Button } from '@bootstrap-styled/v4';
 
 import { Field, Formik } from 'formik';
 import * as yup from 'yup';
+import { useNavigation } from 'react-navi';
+
+import { useStoreState, useStoreActions } from 'easy-peasy';
 import { CustomInputComponent } from '../shared/form';
-import { useStore } from '../../store/useStore';
 import { useUser } from '../../hooks/user';
 
 const createUserSchema = yup.object().shape({
@@ -17,24 +19,20 @@ const createUserSchema = yup.object().shape({
 });
 
 export const UserForm = ({ reqdata, id }) => {
-  const { state, dispatch } = useStore();
+  const save = useStoreActions(actions => actions.user.save);
+  const state = useStoreState(state => state);
+  const navigation = useNavigation();
+  console.log(state);
+  const { data, error, loading } = reqdata;
 
-  const { data, error, loading } = reqdata || useUser(id);
-  // console.log(data, '______', user);
-
-  const onSubmit = (user, d) => {
-    // console.log(user, d, '+++++++');
-    // { values, actions }
-    // console.log(actions);
-    // actions.setSubmitting(false);
-    // user.id = +user.id + 1;
+  const onSubmit = async (user, d) => {
     const userModel = {
       ...user,
       id,
     };
 
-    dispatch({ type: 'save', userModel });
-    alert(JSON.stringify(data, null, 2));
+    await save(userModel);
+    await navigation.navigate('/users');
   };
 
   return (
@@ -63,7 +61,6 @@ export const UserForm = ({ reqdata, id }) => {
           </Form>
         )}
       />
-      {JSON.stringify(state)}
     </div>
   );
 };
