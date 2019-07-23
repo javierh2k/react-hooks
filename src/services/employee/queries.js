@@ -7,6 +7,9 @@ export const GET_EMPLOYEES = `
     email
   }
 }
+
+
+
 `;
 
 export const GET_EMPLOYEE = `
@@ -15,6 +18,17 @@ query employee($id: ID!) {
     name
     lastname
     email
+    category {
+      id
+    }
   }
+
+  categories{
+    id
+    name
+    order
+  }
+
 }
+ 
 `;

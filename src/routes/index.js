@@ -18,10 +18,10 @@ export default mount({
     getView: () => import('../containers/home.js'),
   }),
 
-  // '/counter': route({
-  //   title: 'Counter',
-  //   getView: () => import('../containers/counter.js'),
-  // }),
+  '/login': route({
+    title: 'Login',
+    getView: () => import('../containers/login'),
+  }),
 
   '/about': route({
     title: 'About',

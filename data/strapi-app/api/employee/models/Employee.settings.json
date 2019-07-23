@@ -1,6 +1,6 @@
 {
   "connection": "default",
-  "collectionName": "",
+  "collectionName": "employee",
   "info": {
     "name": "employee",
     "description": ""
@@ -17,6 +17,10 @@
     },
     "email": {
       "type": "email"
+    },
+    "category": {
+      "model": "category",
+      "via": "employee"
     }
   }
 }
