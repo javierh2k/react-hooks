@@ -7,16 +7,15 @@ import { Home } from 'styled-icons/boxicons-regular/Home';
 import { Album } from 'styled-icons/boxicons-regular/Album';
 
 const iconsStyles = css`
-  color: red;
+  color: #ce4b4b;
   width: 20px;
   margin: 0 10px;
 `;
 
 export const MenuIcon = styled(Menu)`
-  color: #2f353a;
-  width: 50px;
+  color: white;
+  width: 30px;
   cursor: pointer;
-  ${iconsStyles}
 `;
 
 export const HomeIcon = styled(Home)`
@@ -38,9 +37,9 @@ text-decoration: none;
 transition: color 150ms ease-out;
 
 &.${activeClassName} {
-  color: red !important;
+  color: #ce4b4b !important;
   font-weight: bold;
-  border-right: 3px solid red;
+  border-right: 3px solid #ce4b4b;
   /* ${({ theme }) => theme.primaryColor}; */
   /* background: ${({ type }) =>
     type === 'user' ? 'var(--primary-color)' : 'var(--secondary-color)'}; */
@@ -54,7 +53,7 @@ export const Header = styled.nav`
   top: 0;
   left: 0;
   right: 0;
-  background: white;
+  background: #ce4b4b;
   height: 55px;
   z-index: 10;
   padding: 1rem;
@@ -72,7 +71,7 @@ export const Main = styled.main`
 `;
 
 export const Title = styled.div`
-  color: red;
+  color: white;
   font-size: 18px;
 `;
 
@@ -96,8 +95,7 @@ export const Sidebar = styled.div`
     min-height: 100%;
     margin: 0;
     padding: 0;
-  }
-  .nav {
+
     display: flex;
     flex-wrap: wrap;
     padding-left: 0;
