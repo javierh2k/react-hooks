@@ -77,6 +77,8 @@ yarn start
     docker-compose up -d
 ```
 
+> install all strapi-plugins
+
 # Or build and server the production version
 
 yarn build
