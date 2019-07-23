@@ -8,8 +8,13 @@ lerna-debug.log*
 .DS_Store
 
 data/db/
-build
-plugins
+package-lock.json
+data/strapi-app/plugins/content-manager/
+data/strapi-app/plugins/content-type-builder/
+data/strapi-app/plugins/settings-manager/
+data/strapi-app/plugins/email/
+data/strapi-app/plugins/upload/
+
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 

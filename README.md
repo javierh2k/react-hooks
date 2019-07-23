@@ -74,10 +74,10 @@ yarn start
 
 ```bash
     cd strapi-server
-    docker-compose up -d
+    docker-compose up --build -d
 ```
 
-> install all strapi-plugins
+> instalar strapi-plugins necesarios
 
 # Or build and server the production version
 
