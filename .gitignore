@@ -6,7 +6,7 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 .DS_Store
-
+yarn.lock
 data/db/
 package-lock.json
 data/strapi-app/plugins/content-manager/
@@ -14,7 +14,7 @@ data/strapi-app/plugins/content-type-builder/
 data/strapi-app/plugins/settings-manager/
 data/strapi-app/plugins/email/
 data/strapi-app/plugins/upload/
-
+yarn.lock
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 

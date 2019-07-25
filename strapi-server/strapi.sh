@@ -28,7 +28,7 @@ then
 fi
 
 cd $APP_NAME
-strapi start &
+strapi develop &
 
 strapiPID=$!
 wait "$strapiPID"

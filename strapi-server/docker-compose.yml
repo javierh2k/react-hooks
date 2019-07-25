@@ -2,7 +2,9 @@ version: "3"
 
 services:
   api:
-    image: strapi/strapi
+    # image: forgisdev/strapi:3.0.0-beta.10
+    #bobaekang/strapi:beta
+    build: ./
     container_name: strapi-app
     environment:
       - APP_NAME=strapi-app

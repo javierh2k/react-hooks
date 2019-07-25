@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import BusyIndicator from 'react-busy-indicator';
+// import BusyIndicator from 'react-busy-indicator';
 import { Link, NotFoundBoundary, useLoadingRoute } from 'react-navi';
 
 // A simple "authentication" service that just saves the
@@ -71,7 +71,7 @@ export async function fetchResource(id, currentUser = {}) {
 }
 
 export function LoginLink({ redirectTo }) {
-  const loginURL = '/login/?redirectTo=' + encodeURIComponent(redirectTo);
+  const loginURL = `/login/?redirectTo=${encodeURIComponent(redirectTo)}`;
 
   return <Link href={loginURL}>Please log in.</Link>;
 }
@@ -103,7 +103,7 @@ export function Layout({ children, currentUser, onLogout }) {
   const loadingRoute = useLoadingRoute();
   return (
     <div className="Layout">
-      <BusyIndicator isBusy={!!loadingRoute} delayMs={100} />
+      {/* <BusyIndicator isBusy={!!loadingRoute} delayMs={100} /> */}
       <header className="Layout-header">
         <h1 className="Layout-title">
           <Link href="/">ListMaker Pro 📈</Link>
